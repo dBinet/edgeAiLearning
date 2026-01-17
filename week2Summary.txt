@@ -1,3 +1,27 @@
 Week 2 summary:
 
 This week I have been learning about mutiple linear regreassion model. This means that there is multiple features (x(j)) that are impacting the final value (y). This allows a more complex but more precise model to be built. To handle mutiple features, the model now depends on w1 -> wn and b. This introduce the utilization of vector in python (numpy library) to be able to handle the computation now required. This means that the model (f), the cost (J) and gradient descent funciton are now using vectors. Using numpy vector operators allows to utilize modern hardware to speed up the calculation. For example, GPU can be used for parralel calculation and makes the algorithm much faster. An alternative for the gradient descent function was also mentionned. Normal Equation can be used only for linear regression and it doesn't use an iterative approach. But it's limited to only linear regression and can be slow when a model is using a large number of features. Over 10 000 features, it becomes impratical as it slow down too much.
+
+ === Week 2 Complete - January 18, 2026 ===
+   
+   Total time: ~6 hours
+   
+   What I learned:
+   - Multiple linear regression with multiple features
+   - Vectorization using NumPy for efficiency
+   - Feature scaling and why it helps gradient descent
+   - Normal equation as alternative to gradient descent
+   - Feature engineering
+   - Started on Polynomial regression
+   
+   What I practiced:
+   - Implemented multiple regression in NumPy
+   - Applied StandardScaler for normalization
+   - Completed Week 2 practice lab
+   
+   Key insights:
+   The importance of feature scaling cannot be underestimated to have a model that converge quickly to a minimum. Another insight that I've got this week is the importance of looking at the weight of each feature. It can show if a feature is really relevant to finding the final solution or not. 
+   
+   Confidence level: 8/10
+   
+   Ready for Week 3: Yes
