@@ -8,13 +8,20 @@ from sklearn.preprocessing import StandardScaler
 data = fetch_california_housing()
 X, y = data.data, data.target
 
-print(f"Dataset shape: {X.shape}")
-print(f"Features: {data.feature_names}")
+# --- Add rooms per occupency to the dataset ---
+featureNames = list(data.feature_names) + ['RoomsPerOccup']
+
+newFeature = X[:,2]/X[:,5]
+newFeatureReshaped = newFeature[:, np.newaxis]
+
+newX = np.append(X, newFeatureReshaped, axis =1)
+print(f"Dataset shape: {newX.shape}")
+print(f"Features: {featureNames}")
 print(f"Target: median house value (hundreds of thousands)")
 print(f"Price range: ${y.min():.2f} - ${y.max():.2f} (x100k)")
 
 # --- Train/test split ---
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(newX, y, test_size=0.2, random_state=42)
 
 # --- Normalize using sklearn ---
 scaler = StandardScaler()
@@ -56,7 +63,7 @@ test_r2  = r_squared(y_test_n,  test_preds)
 # --- Results ---
 print(f"\nTraining time: {elapsed:.4f}s")
 print(f"\nFeature weights:")
-for name, weight in zip(data.feature_names, w):
+for name, weight in zip(featureNames, w):
     print(f"  {name:10s}: {weight:+.4f}")
 print(f"\n--- Evaluation ---")
 print(f"Train R²: {train_r2:.4f}  |  Test R²: {test_r2:.4f}")
