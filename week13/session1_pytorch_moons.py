@@ -44,7 +44,7 @@ for epoch in range(1000):
     loss = criterion(y_pred, y_train_t)
 
     # Backward pass — replaces your entire manual backprop block
-    # optimizer.zero_grad()   # clear old gradients (they accumulate by default)
+    optimizer.zero_grad()   # clear old gradients (they accumulate by default)
     loss.backward()         # computes ALL gradients via autograd — your chain rule, automated
     optimizer.step()        # W -= lr * update  (Adam formula applied internally)
 
