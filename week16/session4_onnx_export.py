@@ -46,7 +46,8 @@ torch.onnx.export(
         'input':  {0: 'batch_size'},
         'output': {0: 'batch_size'}
     },
-    opset_version=13
+    opset_version=13,
+    dynamo=False,
 )
 
 print("Exported to models/cnn_week16_session3.onnx")
